@@ -4,9 +4,15 @@ namespace Utils\Collections;
 
 use IteratorAggregate;
 
-class Collections implements IteratorAggregate {
-    function __constructor(public array $items = [])
+class Collections implements \IteratorAggregate {
+    private $items = [];
+    
+    function __constructor(array $items = [])
     {
-        
+        $this->items = $items;
+    }
+
+    public function getIterator() {
+        return new \ArrayIterator($this->items);
     }
 }
